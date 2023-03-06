@@ -1,0 +1,27 @@
+<script>
+
+    //ONLINE SHOP main Code 
+
+    // 1. Data
+    const productName = "Iphone 14 Pro Max"
+    
+    const productPrice = 28999
+
+    let q = +prompt("CATALOG" + "\n" + 
+                   "-----------------------" + "\n" +
+                   productName + "\n" +                                      
+                   productPrice + "\n" +
+                   "-----------------------" ) 
+
+    // 2. "+" convert string to number 
+    //alert(typeof q)
+
+    // 3. Calculus
+
+    let total = productPrice * q 
+
+    // 4 show final Price (OUTPUT)
+
+    alert("Your order:" + "\n" + 
+        '"' +  productName + '"' + " x " + q + " = " + total)
+</script>

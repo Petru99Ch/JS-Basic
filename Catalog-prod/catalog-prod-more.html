@@ -1,0 +1,50 @@
+<script>
+
+    //ONLINE SHOP main Code 
+
+    // 1. Data
+    const productName1 = "Iphone 14 Pro Max"    
+    const productPrice1 = 28999
+
+    const productName2 = "Samsung S22 Ultra"    
+    const productPrice2 = 24599
+
+    const productName3 = "Xiaomi Mi 11 Lite"    
+    const productPrice3 = 11299
+
+    let q = +prompt("CATALOG" + "\n" + 
+                   "-----------------------" + "\n" +
+                   productName1 + "\n" +                                      
+                   productPrice1 + "\n" +
+                   "-----------------------" ) 
+
+    let x = +prompt("CATALOG" + "\n" + 
+                   "-----------------------" + "\n" +
+                   productName2 + "\n" +                                      
+                   productPrice2 + "\n" +
+                   "-----------------------" ) 
+    let z = +prompt("CATALOG" + "\n" + 
+                   "-----------------------" + "\n" +
+                   productName3 + "\n" +                                      
+                   productPrice3 + "\n" +
+                   "-----------------------" ) 
+
+    // 2. "+" convert string to number 
+    //alert(typeof q)
+
+    // 3. Calculus
+
+    let total1 = productPrice1 * q 
+    let total2 = productPrice2 * x 
+    let total3 = productPrice3 * z
+
+    let total = total1 + total2 + total3
+
+    // 4 show final Price (OUTPUT)
+
+    alert("You order:" + "\n" + 
+        '"' +  productName1 + '"' + " x " + q + " = " + total1 + "\n" +
+        '"' +  productName2 + '"' + " x " + x + " = " + total2 + "\n" + 
+        '"' +  productName3 + '"' + " x " + z + " = " + total3 + "\n" +
+        "TOTAL: " + total  )
+</script>
