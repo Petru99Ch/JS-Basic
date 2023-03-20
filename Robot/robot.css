@@ -1,0 +1,44 @@
+body{
+    background-color: #333;
+    color: white;
+}
+
+#gameMap {
+    background-color: #555;
+    height: 128px;
+    border: 2px solid white;
+    margin-bottom: 5px;
+}
+
+#gameMap .robot {
+    height: 128px;
+    width: 128px;
+    background-image: url(image/Robot.png);
+}
+.controls {
+    text-align: center;
+}
+
+#gameVertical {
+    background-color: #555;
+    width: 128px;
+    height: calc(100vh - 128px - 60px);
+    border: 2px solid white;
+    margin-bottom: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+   
+#gameVertical .robot {
+    height: 128px;
+    width: 128px;
+    background-image: url(image/Robot.png);
+}
+.controlsVertical {
+    display: inline-block;
+}
+
+.controlsVertical .up,
+.controlsVertical .down{
+    display: block;
+}

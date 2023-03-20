@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <title>Robot | Game</title>
+    <link rel="stylesheet" href="robot.css">
+</head>
+<body>
+    <div id="gameMap">
+        <!-- <div class="robot"></div> -->
+    </div>
+    
+    <div class="controls">
+        <button    
+            onclick="
+            if(robotLeft * STEP > robotLeft ){
+            robotLeft--
+            }
+            render()
+            "
+        >◀</button>
+        <button
+            onclick="
+            if(robotLeft * STEP <  innerWidth - STEP * 3 ){
+            robotLeft++
+            }
+            render()
+            "
+        >▶</button>
+    </div>
+
+    <div id="gameVertical">
+    </div>
+
+    <div class="controlsVertical">
+        <button class="up"
+            onclick="
+            if(robotUp * STEP_VERTICAL > robotUp ){
+                robotUp--
+            }
+            renderVertical()
+            "
+        >▲</button>
+        <button class="down"
+            onclick="
+                if(robotUp * STEP_VERTICAL <  innerHeight - STEP_VERTICAL * 6  ){
+                    robotUp++
+                }
+                renderVertical()
+            "
+        >▼</button>
+
+    </div>
+    <script src="robot.js"></script>
+    <script src="robotV.js"></script>
+</body>
+</html>
