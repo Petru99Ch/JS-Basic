@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        
+    </div>
+
+    <script>
+
+        let i = 9
+
+        while (i >= 1) {
+            container.innerHTML += `
+            <img src="images/${i}.jpg">
+            `
+            if (i==7){
+                container.innerHTML += `<br>`
+            }
+
+            if (i==4){
+                container.innerHTML += `<br>`
+            }
+            i--
+        }
+
+    </script>
+</body>
+</html>
