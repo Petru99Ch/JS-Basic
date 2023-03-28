@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">   
+    <title>LIFT | JS</title>
+    <style>
+        #building{
+            width: 100px;
+            height: 550px;
+            border: 5px solid black;
+            float: left;
+            margin-top: 30px;
+            
+
+        }
+        #lift{
+            width: 100px;
+            height: 50px;
+            background-color: #356;
+            transition: 1s;
+            
+        }
+        #btn{
+            width: 100px;
+            height: 550px;
+            border: 5px solid black;
+            float: left;
+            margin-top: 30px;
+        }
+
+        #btn button {
+            width: 100px;
+            height: 50px;
+        }
+
+        #up{
+            position: absolute;
+            top: 15px;
+            left: 160px;
+        }
+
+        
+        #down{
+            position: absolute;
+            top: 600px;
+            left: 160px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="up" onclick="changeFloorUp()">↑</button>
+
+    <div id="building">
+        <div id="lift">
+           
+        </div>
+    </div>
+
+    <div id="btn">
+        <button onclick="floor=10; movieLift()">10</button>        
+        <button onclick="floor=9; movieLift()">9</button>
+        <button onclick="floor=8; movieLift()">8</button>
+        <button onclick="floor=7; movieLift()">7</button>
+        <button onclick="floor=6; movieLift()">6</button>
+        <button onclick="floor=5; movieLift()">5</button>
+        <button onclick="floor=4; movieLift()">4</button>
+        <button onclick="floor=3; movieLift()">3</button>
+        <button onclick="floor=2; movieLift()">2</button>
+        <button onclick="floor=1; movieLift()">1</button>
+        <button onclick="floor=0; movieLift()">0</button>
+        
+    </div>
+
+    <button id="down" onclick="changeFloorDown()">↓</button>
+
+    <script>
+        let floor = 0
+
+        function movieLift(){
+            let y = 500 - floor * 50 
+            lift.style=`transform: translateY(${y}px)`
+        }
+
+        movieLift()
+
+        function changeFloorUp(){
+            floor++
+
+            for(i=0; i<=10; i++){
+
+                if(floor <=10 && floor >= 0){
+                    let y = 500 - floor * 50 
+                    lift.style=`transform: translateY(${y}px)`
+                }else {
+                    floor = 10
+                }
+            
+            }
+
+
+        }
+        function changeFloorDown(){
+            floor--
+
+            for(i=10; i>=0; i--){
+
+            if(floor<=10 && floor >= 0){
+                let y = 500 - floor * 50 
+                lift.style=`transform: translateY(${y}px)`
+                } else { 
+                    floor = 0
+                }
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
