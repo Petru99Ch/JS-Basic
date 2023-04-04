@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">    
+    <title>Game-Ball | JS</title>
+    <style>
+        body{
+            background-color: #333;
+        }
+        #field{
+            /* width: 500px;
+            height: 500px; */
+            border-top: 5px double white;
+            border-bottom: 1px solid white;
+            position: relative;
+            margin: auto;
+        }
+        #ball{
+            /* width: 50px;
+            height: 50px; */
+            background: radial-gradient(white,darkgreen);
+            border-radius: 100%;
+            position: absolute;
+            /* bottom: 0;
+            left: 0; */
+        }
+        #player{
+            /* width: 100px;
+            height: 50px; */
+            background-color: orangered;
+            position: absolute;
+            /* bottom: 0;
+            left: 0; */
+        }
+
+        #points {
+            position: absolute;
+            left: 10vh;
+            top: 10vw;
+            background-color: #bbb;
+
+            width: 150px;
+            height: 150px;
+            text-align: center;
+
+            
+        }
+
+        #points span {
+            font-family: sans-serif;
+            font-size: 2em;
+        }
+
+        #points p { 
+            font-size: 2em;
+            font-family: sans-serif;
+            font-weight: 400;
+        }
+
+    </style>
+</head>
+<body onkeydown="onKeyboard()">
+    <div id="field">
+        <div id="ball"></div>
+        <div id="player"></div>
+    </div>
+
+    <div id="points"></div>
+
+    <script>
+        const F_WIDTH = 500
+        const F_HEIGHT = 500
+       
+        const B_WIDTH  = 50
+        const B_HEIGHT = 50
+        let bLeft = 0
+        let bBottom = 0
+        let bSpeedV = 0 
+        let bSpeedH = 0 
+
+        const P_WIDTH = 100
+        const P_HEIGHT = 50
+        let pLeft = 0
+        let pBottom = 0
+        let pBallInHands = true
+
+        let timerID = null
+        let score = 0 
+
+        bLeft = P_WIDTH/2 - B_WIDTH/2 + pLeft
+
+        field.style=`
+                    width:${F_WIDTH}px;
+                    height:${F_HEIGHT}px;                   
+        `
+
+        function ballUpdateStyle(){
+        ball.style=`
+                    width:${B_WIDTH}px;
+                    height:${B_HEIGHT}px;
+                    left:${bLeft}px;
+                    bottom:${bBottom}px;
+        `}
+
+
+        function updatePlayerStyle(){
+        player.style=`
+                    width:${P_WIDTH}px;
+                    height:${P_HEIGHT}px;
+                    left:${pLeft}px;
+                    bottom:${pBottom - P_HEIGHT - 1}px;
+        `}
+
+        updatePlayerStyle()
+        ballUpdateStyle()
+
+
+        function onKeyboard(){
+                switch(event.code){
+                    case "ArrowLeft":
+                        if(pLeft > 0){
+                            pLeft -= 10
+                        }
+                    break;
+                    case "ArrowRight":
+                        if(pLeft < F_WIDTH - P_WIDTH ){
+                             pLeft += 10               
+                         }
+                    break;
+                    case "Space": 
+                        if(bBottom < F_HEIGHT){
+                            throwBall()
+                        }
+                    break;    
+                    
+                }
+                if(pBallInHands){
+                    bLeft = P_WIDTH/2 - B_WIDTH/2 + pLeft
+                }
+                ballUpdateStyle()
+                updatePlayerStyle()
+                
+            }
+                    
+     
+            
+
+        function throwBall(){
+            timerID = setInterval(moveBall, 100)
+            pBallInHands = false
+            bSpeedH = Math.random() * 6  - 3
+            bSpeedV = 10
+        }
+
+        function moveBall(){
+            bLeft+= bSpeedH
+            bBottom += bSpeedV
+            ballUpdateStyle()
+
+            if(bBottom> F_HEIGHT - B_HEIGHT){
+                bSpeedV = -10
+                bSpeedH = Math.random() * 10  - 5
+            }
+
+            if(bBottom <= 0){
+                clearInterval(timerID)   
+                
+        // HOME WORK - START 
+                if(bLeft >= pLeft - B_WIDTH / 2 && bLeft <= pLeft + P_WIDTH + B_WIDTH / 2 ){
+                    score += 1
+                    console.log(score)
+                    points.innerHTML = `
+                        <span>Score</span>
+                        <p>${score}</p> 
+                    `
+                    centerBall()
+                } else {
+                    score -= 1
+                    console.log(score)
+                    points.innerHTML = `
+                        <span>Score</span> 
+                        <p>${score}</p> 
+                    `
+                    centerBall()
+                    
+                }
+            }         
+
+        }   
+
+        function centerBall(){
+                pBallInHands = true
+                bLeft = P_WIDTH/2 - B_WIDTH/2 + pLeft
+        }
+
+        // HOME WORK - END
+            
+            
+
+
+
+            
+
+
+
+
+
+
+
+        
+
+
+            // if (event.code == "ArrowLeft"){
+            //     if(pLeft > 0){
+            //     pLeft -= 10
+            //     }
+            //     updatePlayerStyle()
+            // } else if (event.code == "ArrowRight"){
+
+            //     if(pLeft < F_WIDTH - P_WIDTH ){
+            //     pLeft += 10
+               
+            //     } 
+            //     updatePlayerStyle()
+                
+            // }else if (event.code == "Space"){
+            //     if(bBottom < F_HEIGHT - B_HEIGHT){
+            //     throwBall()
+            //      }  
+            //     }      
+    </script>
+</body>
+</html>
