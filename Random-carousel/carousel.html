@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel random | JS </title>
+    <style>
+        body{
+            background-color: #333;
+            text-align: center;
+        }
+        #carousel {
+            width: 500px;
+            height: 500px;
+            border: 2px solid white;
+            
+            margin: auto;
+            
+            
+        }
+        #carousel div{
+            width: 100px;
+            height: 100px;
+            /* border: 1px solid yellow; */
+            float: left;
+            box-sizing: border-box;
+            transition: 1s;
+        }
+        button{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="carousel">
+
+    </div>
+    <button onclick="previousSlide()">PREVIOUS</button>
+    <button onclick="nextSlide()">NEXT</button>
+
+    <script>
+        
+        let slide = 1
+        function renderSlide() {
+            //clear the last slide 
+            carousel.innerHTML=""
+
+            for(let r = 0; r < 5; r++)
+                for(let c = 0; c < 5; c++)
+                    carousel.innerHTML += `
+                        <div id="sq-${r}-${c}" style="
+                            background-image:url(image/${slide}.jpg);
+                            background-position:  ${c * -100}px ${r * -100}px;
+                            transform: translateX(${-300 + Math.random() * 600}px)
+                                       translateY(${-300 + Math.random() * 600}px)
+                                       rotate(${Math.random() * 360}deg);
+                            opacity:0;
+                        " >
+                        </div>
+                    `
+        }
+        function nextSlide(){
+            if(slide < 3){
+                slide++
+            } else {
+                slide = 1
+            }
+            renderSlide()
+            transitionSlide()      
+            
+        }
+        function previousSlide(){
+            if(slide > 1){
+                slide--
+            } else {
+                slide = 3
+            }
+            renderSlide()
+            transitionSlide()
+            
+        }
+
+
+        function transitionSlide(){
+            setTimeout(function(){
+                for(let r = 0; r < 5; r++){
+                    for(let c = 0; c < 5; c++){
+                        window[`sq-${r}-${c}`].style.transform = "translateX(0) translateY(0) rotate(0)"
+                        window[`sq-${r}-${c}`].style.opacity="1"                       
+                    }
+                }
+            }       
+            , 1000)
+        }
+
+        setInterval(function(){
+            if(slide < 3){
+                slide++
+            } else {
+                slide = 1
+            }
+            renderSlide()
+            transitionSlide()           
+        }, 6000)
+
+        
+
+        transitionSlide()
+        renderSlide()
+    </script>
+</body>
+</html>
