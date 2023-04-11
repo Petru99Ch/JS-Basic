@@ -42,6 +42,9 @@
     <script>
         
         let slide = 1
+        let timerID = null
+
+
         function renderSlide() {
             //clear the last slide 
             carousel.innerHTML=""
@@ -66,8 +69,10 @@
             } else {
                 slide = 1
             }
+            clearInterval(timerID)
             renderSlide()
-            transitionSlide()      
+            transitionSlide() 
+            upInterval()     
             
         }
         function previousSlide(){
@@ -76,8 +81,12 @@
             } else {
                 slide = 3
             }
+            clearInterval(timerID)
+
             renderSlide()
             transitionSlide()
+            upInterval()
+
             
         }
 
@@ -94,7 +103,9 @@
             , 1000)
         }
 
-        setInterval(function(){
+       function upInterval(){
+        
+        timerID = setInterval(function(){
             if(slide < 3){
                 slide++
             } else {
@@ -103,9 +114,9 @@
             renderSlide()
             transitionSlide()           
         }, 6000)
+        } 
 
-        
-
+        upInterval()
         transitionSlide()
         renderSlide()
     </script>
