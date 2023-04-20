@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>ADD Rotate | JS</title>
+
+    <style>
+        body{
+            background-color: #332;
+            font-family: Arial, Helvetica, sans-serif;
+            
+        }
+        #ad {
+            border: 2px dotted #fff;
+            color: #fff;
+            padding: 1em;
+        }
+        img {
+            display: block;
+            margin-top: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div id="ad">
+        
+        <!-- <p>this is a blah blah ad content</p> -->
+    </div>
+
+    <script>
+        let adTitles = [
+            "This is first ad title",
+            "This is second ad title",
+            "This is third ad title"
+        ]
+
+        let adText = [
+            "Text for the first add",
+            "Text for the second add",
+            "Text for the third add"
+        ]
+        let adImage = [
+            "images/first-add.jpg",
+            "images/second-add.jpg",
+            "images/third-add.jpg"
+        ]
+
+
+        //HW: create another array, with the images for each ad
+        //    rotate the images in sync with the text
+
+
+        let adIndex = 0
+
+        function showAd(){
+            ad.innerHTML = `
+                <h1>${adTitles[adIndex]}</h1>
+                <p>${adText[adIndex]}
+                <img src="${adImage[adIndex]}">
+            `
+        }
+
+        function rotateAds () {      
+
+        /* 
+                        ['T1' , 'T2' , 'T3']
+                                        |
+                          +-------------+
+                          v  
+                        ["T3" , "T2" , "T1" ]
+        
+        */
+
+        let lastTitle = adTitles.pop()
+        adTitles.unshift(lastTitle)
+
+        let lastText= adText.pop()
+        adText.unshift(lastText)
+
+        let lastImage= adImage.pop()
+        adImage.unshift(lastImage)
+
+        showAd()
+        }
+
+        setInterval(rotateAds, 3000)
+        showAd()
+
+    </script>
+</body>
+</html>
