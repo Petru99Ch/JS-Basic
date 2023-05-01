@@ -1,0 +1,49 @@
+body {
+    background-color: #223;
+}
+#map {
+    width: 496px;
+    height: 496px;
+    border: 3px solid #ddd;   
+    margin: auto; 
+    box-sizing: content-box;
+}
+#map div {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #fff;
+    float: left;
+    box-sizing: content-box;
+}
+
+#map .coin {
+    background-image: url(images/coin.png);
+}
+
+#map .pac {
+    background-image: url(images/pac.png);
+}
+
+#map .heart {
+    background-image: url(images/heart.png);
+}
+
+#map .bomb {
+    background-image: url(images/bomb.png);
+}
+
+#result {
+    width: 500px;
+    height: 100px;
+    border: 1px solid #fff;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#result h2 { 
+    color: white;
+    font-size: 2em;
+    display: inline-block;
+    margin-right: 100px;
+    margin-left: 10px;
+}
