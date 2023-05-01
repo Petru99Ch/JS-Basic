@@ -60,6 +60,7 @@ function randomValue() {
 
 }     
 
+setInterval(randomValue, 1000)
 // TEST Random Value for ARRAY 
 
 
@@ -77,6 +78,7 @@ function movePac() {
         
     }
 
+    //HW3 : Logical for hp and Game Over 
     if(mapData[pr][pc] == 3){
         hp <= 90 ? hp += 10 : 0
     }
